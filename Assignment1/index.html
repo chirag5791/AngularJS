@@ -17,14 +17,15 @@
         <input ng-model="lunchmenu" type="text"
         placeholder="list comma separated dishes you usually have for lunch"
         class="form-control">
+        {{lunchmenu}}
       </div>
       <div class="form-group">
         <button class="btn btn-default" ng-click="getLunchMenuCount()">Check If Too Much</button>
       </div>
       <div class="form-group message">
         <p ng-if="count == 0">Please enter data first</p>
-        <p ng-if="count <= 3 && count != 0">Enjoy!</p>
-        <p ng-if="count > 3">Too much!</p>
+        <p ng-if="count < 4 && count != 0">Enjoy!</p>
+        <p ng-if="count >= 4">Too much!</p>
       </div> 
     </div>
   </body>

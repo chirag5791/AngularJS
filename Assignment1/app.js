@@ -5,14 +5,18 @@ angular.module('LunchChecker', [])
 
   .controller('LunchCheckerController', function ($scope) {
 
+    $scope.lunchmenu = "";
+
     $scope.getLunchMenuCount = function() {
-      if (typeof $scope.lunchmenu != 'undefined') {
-        var strLength = $scope.lunchmenu.split(',').length;
-        $scope.count = strLength;
-      } else {
-        $scope.count = 0;
-      }
+      $scope.count = calculateLunchMenuCount($scope.lunchmenu);
+    };
+
+    function calculateLunchMenuCount(lunchmenu) {
+      return $scope.lunchmenu.split(',').filter(function(elem) {
+        return elem.length>0;
+      }).length;
     }
+
   });
 
 })();
